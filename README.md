@@ -1,9 +1,8 @@
-TypeScript Cypress Add Custome Assertion Operator Demo
-=======================================================
+TypeScript Cypress Add Custom Operator "have.textTrimmed" Demo
+==============================================================
 
-主要是利用了chai的扩展能力。
-
-需要注意：可以把多个operator使用`.`串起来使用，形成易读的语句。
+本来想弄成`have.text.trimmed`，结果发现弄不出来，因为在`text`这个operator加不了另一个`trimmed`
+（也可能是我不会弄）
 
 ```
 npm install
