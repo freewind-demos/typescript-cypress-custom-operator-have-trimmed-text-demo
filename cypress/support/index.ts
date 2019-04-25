@@ -1,8 +1,15 @@
-// @ts-ignore
-const Assertion = chai.Assertion as any;
+chai.use((chai, utils) => {
 
-Assertion.addMethod("textTrimmed", function (expectedString: string) {
-  // @ts-ignore
-  const $element: JQuery = this._obj;
-  new Assertion($element.text().trim()).to.equal(expectedString.trim());
-});
+  (chai as any).Assertion.addChainableMethod("trimmed", () => {
+  }, function () {
+    // @ts-ignore
+    const obj: JQuery = utils.flag(this, 'object')
+
+    const oldText = obj.text.bind(obj);
+    // @ts-ignore
+    obj.text = () => {
+      return oldText().trim()
+    }
+  });
+
+})
